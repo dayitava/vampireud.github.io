@@ -194,7 +194,7 @@ padding-right: 23px;
   }
    
    .imgart>img{
-   height:300px
+   height:auto
    }
 }
 @media screen and (max-width: 523px){
