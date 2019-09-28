@@ -30,7 +30,7 @@
     <!-- -----------Nav Bar----------------- -->
    
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
-      <a class="navbar-brand" href="vampireud.github.io" style="font-weight: 600; letter-spacing: 5px " >MY PORTFOLIO</a>
+      <a class="navbar-brand" href="index.html" style="font-weight: 600; letter-spacing: 5px " >MY PORTFOLIO</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -53,6 +53,11 @@
       </div>
   </div>
   </nav>
+  
+  <!-- custom cursor  -->
+  
+  <div class="cursor cursor--small" ></div>
+  <canvas class="cursor cursor--canvas" resize></canvas>
 
 
     <main role="main" class="container" id="fullpage" >
@@ -155,6 +160,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.0/paper-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
     <script>
             $(document).ready(function () {
             window.scrollTo(0,0);
@@ -218,6 +225,108 @@
         document.body.appendChild(css);
     };
     </script>
+
+    <!-- custom cursor -->
+
+    <script>
+    // set the starting position of the cursor outside of the screen
+let clientX = -100;
+let clientY = -100;
+const innerCursor = document.querySelector(".cursor--small");
+
+const initCursor = () => {
+  // add listener to track the current mouse position
+  document.addEventListener("mousemove", e => {
+    clientX = e.clientX;
+    clientY = e.clientY;
+  });
+  
+  // transform the innerCursor to the current mouse position
+  // use requestAnimationFrame() for smooth performance
+  const render = () => {
+    innerCursor.style.transform = `translate(${clientX}px, ${clientY}px)`;
+    // if you are already using TweenMax in your project, you might as well
+    // use TweenMax.set() instead
+    // TweenMax.set(innerCursor, {
+    //   x: clientX,
+    //   y: clientY
+    // });
+    
+    requestAnimationFrame(render);
+  };
+  requestAnimationFrame(render);
+};
+
+initCursor();
+</script>
+
+<!--  canvas  -->
+<script>
+let lastX = 0;
+let lastY = 0;
+let isStuck = false;
+let showCursor = false;
+let group, stuckX, stuckY, fillOuterCursor;
+
+const initCanvas = () => {
+  const canvas = document.querySelector(".cursor--canvas");
+  const shapeBounds = {
+    width: 75,
+    height: 75
+  };
+  paper.setup(canvas);
+  const strokeColor = "rgba(255, 0, 0, 0.5)";
+  const strokeWidth = 2;
+  const segments = 8;
+  const radius = 15;
+  // we'll need these later for the noisy circle
+  const noiseScale = 150; // speed
+  const noiseRange = 4; // range of distortion
+  let isNoisy = false; // state
+  
+  // the base shape for the noisy circle
+  const polygon = new paper.Path.RegularPolygon(
+    new paper.Point(0, 0),
+    segments,
+    radius
+  );
+  polygon.strokeColor = strokeColor;
+  polygon.strokeWidth = strokeWidth;
+  polygon.smooth();
+  group = new paper.Group([polygon]);
+  group.applyMatrix = false;
+  
+  const noiseObjects = polygon.segments.map(() => new SimplexNoise());
+  let bigCoordinates = [];
+  
+  // function for linear interpolation of values
+  const lerp = (a, b, n) => {
+    return (1 - n) * a + n * b;
+  };
+  
+  // function to map a value from one range to another range
+  const map = (value, in_min, in_max, out_min, out_max) => {
+    return (
+      ((value - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+    );
+  };
+  
+  // the draw loop of Paper.js 
+  // (60fps with requestAnimationFrame under the hood)
+  paper.view.onFrame = event => {
+    // using linear interpolation, the circle will move 0.2 (20%)
+    // of the distance between its current position and the mouse
+    // coordinates per Frame
+    lastX = lerp(lastX, clientX, 0.2);
+    lastY = lerp(lastY, clientY, 0.2);
+    group.position = new paper.Point(lastX, lastY);
+  }
+}
+initCanvas();
+</script>
+
+
+
   </body></html>
 
 
