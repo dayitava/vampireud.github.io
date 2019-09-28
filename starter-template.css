@@ -168,11 +168,11 @@ section{
 }
 
 .neon-work{
-        -webkit-animation-duration: 1s;
+        -webkit-animation-duration: .5s;
         -webkit-animation-name: glow;
         -webkit-animation-direction: alternate;
         -webkit-animation-iteration-count: infinite;
-        animation-duration: 1s;
+        animation-duration: .5s;
         animation-name: glow;
         animation-direction: alternate;
         animation-iteration-count: infinite;
