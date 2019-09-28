@@ -90,6 +90,7 @@ section{
 
 #UIUX::before{
   content: "UI/UX";
+  /* -webkit-text-stroke: 0.1px rgb(255, 255, 255); */
   position: absolute;
   font-size: 100px;
   color: #333;
@@ -102,7 +103,7 @@ section{
   margin-top: 5%;
   font-size: 30px;
   color: #ffffff;
-  /* -webkit-text-stroke: 0.1px rgb(255, 255, 255); */
+  
   font-weight: 700;
   position: absolute;
   text-shadow:  0 0 20px rgb(255, 23, 154);
@@ -119,6 +120,48 @@ section{
   text-shadow:  0 0 20px rgb(23, 255, 93);
   filter: brightness(100%);
 }
+#travelapp::before{
+  content: "Travel App";
+  margin-left: 65%;
+  margin-top: 5%;
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 700;
+  position: absolute;
+  text-shadow:  0 0 20px #249FE6;
+  filter: brightness(100%);
+}
+#NaariyalPani::before{
+  content: "Naariyal Paani";
+  margin-left: 60%;
+  margin-top: 5%;
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 700;
+  position: absolute;
+  text-shadow:  0 0 20px #779526;
+  filter: brightness(100%);
+}
+#Journalweb::before{
+  content: "Journal Website";
+  margin-left: 60%;
+  margin-top: 5%;
+  font-size: 30px;
+  color: #ffffff;
+  font-weight: 700;
+  position: absolute;
+  text-shadow:  0 0 20px #5D1F87;
+  filter: brightness(100%);
+}
+#logos::before{
+  content: "LOGOS";
+  /* -webkit-text-stroke: 0.1px rgb(255, 255, 255); */
+  position: absolute;
+  font-size: 100px;
+  color: #333;
+  font-weight: 700;
+}
+
 
 #neon-text {
   text-shadow:  0 0 20px #ff2020;
@@ -135,7 +178,7 @@ section{
         animation-iteration-count: infinite;
 }
 
-@-webkit-keyframes glow {
+@keyframes glow {
   from { text-shadow: 0 0 10px #0b8ee5; }
   to { text-shadow: 0 0 25px #0b8ee5; }
 }
