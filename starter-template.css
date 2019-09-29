@@ -1,5 +1,8 @@
 @media only screen and (max-width: 1000px) {
 
+  html{
+    cursor: pointer!important;
+  }
   body {
     margin: 0;
     background-color: #111;
@@ -16,7 +19,7 @@
     }
     .mobile{
       text-align: center;
-      margin-top: 50%;
+      margin-top: 10%;
       display: contents!important;
     }
     .pcwebview{
@@ -24,6 +27,16 @@
       width: 70%;
       box-shadow: 0 10px 50px -5px #222;
     }
+    .cursor {
+      display:none;
+    }
+    .cursor--small {
+      display:none;
+    }
+    .cursor--canvas{
+      display:none;
+    }
+    
 }
 
 
