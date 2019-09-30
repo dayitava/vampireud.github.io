@@ -36,6 +36,24 @@
     .cursor--canvas{
       display:none;
     }
+    #UIUX{
+      display: none;
+    }
+    #Journalweb{
+      display: none;
+    }
+    #NaariyalPani{
+      display:none;
+    }
+    #travelapp{
+      display:none;
+    }
+    #Attendance{
+      display:none;
+    }
+    #handmadelaudalausun{
+      display:none;
+    }
     
 }
 
