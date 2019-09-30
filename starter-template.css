@@ -274,7 +274,7 @@ section{
 
 
 button{
-  padding: 2% 2% 2% 2%;
+  padding: 2%;
   width: auto;
   height: 50px;
   border: none;
@@ -285,12 +285,12 @@ button{
   box-shadow: 0 5px 10px -3px #5918df;
   background: linear-gradient(-45deg,#ffa63d,#ff3d77,#1593e3,#5918df);
   background-size: 1100%;
-  transition: 1s; 
+  transition: 2s; 
 
 }
 button:hover{
-  transition: 1s; 
-  transform: scale3d(1.1,1.1,1);
+  transition: 2s; 
+  transform: scale3d(1.2,1.2,1);
   background-position: 100% 0%;
   box-shadow: 0 10px 20px -2px #ffa63d;
   }
