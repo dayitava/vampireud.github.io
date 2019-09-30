@@ -96,15 +96,12 @@ section{
   bottom: 20%;
   margin-bottom: 20%;
   left: 50%;
-  margin-top: -25px;
-  margin-left: -15px;
 }
 .scroll .mouse{
   width: 100%;
   height: 100%;
   position: absolute;
-  top: 550%;
-  left: 0;
+  top: 700%;
   display: block;
   border: 2px solid #ffffff;
   border-radius: 20px;
@@ -213,16 +210,11 @@ section{
 }
 
 .neon-work{
-        -webkit-animation-duration: 1s;
-        -webkit-animation-name: glow;
-        -webkit-animation-direction: alternate;
-        -webkit-animation-iteration-count: infinite;
-        animation-duration: 1s;
-        animation-name: glow;
-        animation-direction: alternate;
-        animation-iteration-count: infinite;
+      animation-duration: 1s;
+      animation-name: glow;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
 }
-
 @keyframes glow {
   from { text-shadow: 0 0 10px #0b8ee5; }
   to { text-shadow: 0 0 25px #0b8ee5; }
@@ -282,9 +274,12 @@ section{
 
 
 button{
-  width: 150px;
+  padding: 2% 2% 2% 2%;
+  width: auto;
   height: 50px;
   border: none;
+  font-weight: 700;
+  letter-spacing: 2px;
   color: #fff;
   border-radius: 50px;
   box-shadow: 0 5px 10px -3px #5918df;
